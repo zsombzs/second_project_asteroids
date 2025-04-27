@@ -19,9 +19,11 @@
         <div id="game-container"></div>
 
         <script type="module">
-            import * as pyodide from "https://cdn.jsdelivr.net/npm/pyodide@0.22.1/pyodide.js";
+            const script = document.createElement("script");
+            script.src = "https://cdn.jsdelivr.net/npm/pyodide@0.22.1/pyodide.js"
+            document.head.appendChild(script);
 
-            async function main() {
+            script.onload = async function main() {
                 const pyodide = await loadPyodide();
                 await pyodide.loadPackage(["pygame-ce"]);
 
@@ -34,9 +36,7 @@
                 const circleShapeCode = await fetch("https://zsombzs.github.io/second_project_asteroids/circleshape.py").then(res => res.text());
 
                 await pyodide.runPython(mainCode + constantsCode + playerCode + asteroidCode + asteroidFieldCode + shotCode + circleShapeCode);
-            }
-
-            main();
+            };
         </script>
     </body>
 </html>
