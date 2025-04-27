@@ -9,7 +9,7 @@ from shot import Shot
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), flags = pygame.SCALED)
     background_image = pygame.image.load("images/background.jpg").convert()
     background_image = pygame.transform.scale(background_image, (1280, 720))
     clock = pygame.time.Clock()
@@ -40,10 +40,11 @@ def main():
     countdown_running = True
     show_game_over = False
 
-    while True:
+    running = True
+    while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return
+                running = False
         
         screen.blit(background_image, (0, 0))
 
@@ -81,7 +82,7 @@ def main():
                 text = font.render("GAME OVER", True, (255, 0, 0))
                 screen.blit(text, (SCREEN_WIDTH / 2 - text.get_width() / 2, SCREEN_HEIGHT / 2 - text.get_height() / 2))
             else:
-                sys.exit()
+                running = False
         
         else:
             updatable.update(dt)

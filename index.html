@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Asteroids Game - Star Wars and Minecraft edition</title>
+        <style>
+            body {
+                margin: 0;
+                background-color: black;
+                overflow: hidden;
+            }
+            #game-container {
+                width: 100vw;
+                height: 100vh;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="game-container"></div>
+
+        <script type="module">
+            import { loadPyodide } from "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js";
+
+            async function main() {
+                const pyodide = await loadPyodide();
+                await pyodide.loadPackage(["pygame-ce"]);
+
+                const mainCode = await fetch("https://zsombzs.github.io/second_project_asteroids/main.py").then(res => res.text());
+                const constantsCode = await fetch("https://zsombzs.github.io/second_project_asteroids/constants.py").then(res => res.text());
+                const playerCode = await fetch("https://zsombzs.github.io/second_project_asteroids/player.py").then(res => res.text());
+                const asteroidCode = await fetch("https://zsombzs.github.io/second_project_asteroids/asteroid.py").then(res => res.text());
+                const asteroidFieldCode = await fetch("https://zsombzs.github.io/second_project_asteroids/asteroidfield.py").then(res => res.text());
+                const shotCode = await fetch("https://zsombzs.github.io/second_project_asteroids/shot.py").then(res => res.text());
+                const circleShapeCode = await fetch("https://zsombzs.github.io/second_project_asteroids/circleshape.py").then(res => res.text());
+
+                await pyodide.runPyhton(mainCode + constantsCode + playerCode + asteroidCode + asteroidFieldCode + shotCode + circleShapeCode);
+            }
+            
+            main();
+        </script>
+    </body>
+</html>
