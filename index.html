@@ -19,7 +19,7 @@
         <div id="game-container"></div>
 
         <script type="module">
-            import { loadPyodide } from "https://cdn.jsdelivr.net/npm/pyodide@0.22.1/pyodide.js";
+            import * as pyodide from "https://cdn.jsdelivr.net/npm/pyodide@0.22.1/pyodide.js";
 
             async function main() {
                 const pyodide = await loadPyodide();
