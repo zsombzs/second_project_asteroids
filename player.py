@@ -8,7 +8,7 @@ class Player(CircleShape):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
         self.shoot_timer = 0
-        self.image = pygame.image.load("spaceship.png").convert_alpha()
+        self.image = pygame.image.load("images/spaceship.png").convert_alpha()
         self.image = pygame.transform.scale(self.image, (80, 80))
 
     def triangle(self):

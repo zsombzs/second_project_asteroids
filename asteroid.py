@@ -7,7 +7,7 @@ class Asteroid(CircleShape):
     def __init__(self, x, y, radius):
         super().__init__(x, y, radius)
 
-        self.image = pygame.image.load("asteroid.png").convert_alpha()
+        self.image = pygame.image.load("images/asteroid.png").convert_alpha()
         self.image = pygame.transform.scale(self.image, (radius * 2, radius * 2))
 
     def draw(self, screen):
