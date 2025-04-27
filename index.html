@@ -25,7 +25,7 @@
 
             script.onload = async function main() {
                 const pyodide = await loadPyodide();
-                await pyodide.loadPackage(["pygame-ce"]);
+                await pyodide.loadPackage(["pygame"]);
 
                 const mainCode = await fetch("https://zsombzs.github.io/second_project_asteroids/main.py").then(res => res.text());
                 const constantsCode = await fetch("https://zsombzs.github.io/second_project_asteroids/constants.py").then(res => res.text());
